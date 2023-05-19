@@ -15,6 +15,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TWI01", "TWI01\TWI01.cproj"
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "DS1307", "DS1307\DS1307.cproj", "{7BB656D0-D004-4875-8093-497C112B6EE9}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TWI_LCD_LIB", "TWI_LCD_LIB\TWI_LCD_LIB.cproj", "{6BE8B25B-AD13-41BF-BC18-7BCC8CE774F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -45,6 +47,10 @@ Global
 		{7BB656D0-D004-4875-8093-497C112B6EE9}.Debug|AVR.Build.0 = Debug|AVR
 		{7BB656D0-D004-4875-8093-497C112B6EE9}.Release|AVR.ActiveCfg = Release|AVR
 		{7BB656D0-D004-4875-8093-497C112B6EE9}.Release|AVR.Build.0 = Release|AVR
+		{6BE8B25B-AD13-41BF-BC18-7BCC8CE774F4}.Debug|AVR.ActiveCfg = Debug|AVR
+		{6BE8B25B-AD13-41BF-BC18-7BCC8CE774F4}.Debug|AVR.Build.0 = Debug|AVR
+		{6BE8B25B-AD13-41BF-BC18-7BCC8CE774F4}.Release|AVR.ActiveCfg = Release|AVR
+		{6BE8B25B-AD13-41BF-BC18-7BCC8CE774F4}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
