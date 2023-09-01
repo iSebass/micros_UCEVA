@@ -1,0 +1,125 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1939 ]
+[d frameptr 6 ]
+"10 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"6 C:\LABORAL\UCEVA\2023B\MICROS\LIBRERIA_LCD.X\LCD_LIB.c
+[v _Load_Cmd Load_Cmd `(v  1 s 1 Load_Cmd ]
+"20
+[v _Load_Data Load_Data `(v  1 s 1 Load_Data ]
+"37
+[v _LCD_Init LCD_Init `(v  1 e 1 0 ]
+"64
+[v _LCD_Cmd LCD_Cmd `(v  1 e 1 0 ]
+"72
+[v _LCD_Write_Cp LCD_Write_Cp `(v  1 e 1 0 ]
+"81
+[v _LCD_Write_Text_Cp LCD_Write_Text_Cp `(v  1 e 1 0 ]
+"90
+[v _LCD_Set_Cursor LCD_Set_Cursor `(v  1 e 1 0 ]
+"5 C:\LABORAL\UCEVA\2023B\MICROS\LIBRERIA_LCD.X\main.c
+[v _main main `(v  1 e 1 0 ]
+[s S75 . 1 `uc 1 TRISD0 1 0 :1:0 
+`uc 1 TRISD1 1 0 :1:1 
+`uc 1 TRISD2 1 0 :1:2 
+`uc 1 TRISD3 1 0 :1:3 
+`uc 1 TRISD4 1 0 :1:4 
+`uc 1 TRISD5 1 0 :1:5 
+`uc 1 TRISD6 1 0 :1:6 
+`uc 1 TRISD7 1 0 :1:7 
+]
+"1517 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1939.h
+[u S84 . 1 `S75 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES84  1 e 1 @143 ]
+[s S43 . 1 `uc 1 LATD0 1 0 :1:0 
+`uc 1 LATD1 1 0 :1:1 
+`uc 1 LATD2 1 0 :1:2 
+`uc 1 LATD3 1 0 :1:3 
+`uc 1 LATD4 1 0 :1:4 
+`uc 1 LATD5 1 0 :1:5 
+`uc 1 LATD6 1 0 :1:6 
+`uc 1 LATD7 1 0 :1:7 
+]
+"2564
+[s S52 . 1 `uc 1 LATD 1 0 :8:0 
+]
+[u S54 . 1 `S43 1 . 1 0 `S52 1 . 1 0 ]
+[v _LATDbits LATDbits `VES54  1 e 1 @271 ]
+"5 C:\LABORAL\UCEVA\2023B\MICROS\LIBRERIA_LCD.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"22
+} 0
+"81 C:\LABORAL\UCEVA\2023B\MICROS\LIBRERIA_LCD.X\LCD_LIB.c
+[v _LCD_Write_Text_Cp LCD_Write_Text_Cp `(v  1 e 1 0 ]
+{
+[v LCD_Write_Text_Cp@text text `*.25uc  1 p 2 6 ]
+"88
+} 0
+"72
+[v _LCD_Write_Cp LCD_Write_Cp `(v  1 e 1 0 ]
+{
+[v LCD_Write_Cp@letra letra `uc  1 a 1 wreg ]
+"73
+[v LCD_Write_Cp@NibbleL NibbleL `uc  1 a 1 4 ]
+[v LCD_Write_Cp@NibbleH NibbleH `uc  1 a 1 3 ]
+"72
+[v LCD_Write_Cp@letra letra `uc  1 a 1 wreg ]
+"74
+[v LCD_Write_Cp@letra letra `uc  1 a 1 5 ]
+"79
+} 0
+"20
+[v _Load_Data Load_Data `(v  1 s 1 Load_Data ]
+{
+[v Load_Data@data data `uc  1 a 1 wreg ]
+[v Load_Data@data data `uc  1 a 1 wreg ]
+[v Load_Data@data data `uc  1 a 1 0 ]
+"34
+} 0
+"90
+[v _LCD_Set_Cursor LCD_Set_Cursor `(v  1 e 1 0 ]
+{
+[v LCD_Set_Cursor@fila fila `uc  1 a 1 wreg ]
+"91
+[v LCD_Set_Cursor@pos pos `uc  1 a 1 10 ]
+"90
+[v LCD_Set_Cursor@fila fila `uc  1 a 1 wreg ]
+[v LCD_Set_Cursor@col col `uc  1 p 1 6 ]
+[v LCD_Set_Cursor@fila fila `uc  1 a 1 9 ]
+"99
+} 0
+"64
+[v _LCD_Cmd LCD_Cmd `(v  1 e 1 0 ]
+{
+[v LCD_Cmd@cmd cmd `uc  1 a 1 wreg ]
+"65
+[v LCD_Cmd@NibbleL NibbleL `uc  1 a 1 4 ]
+[v LCD_Cmd@NibbleH NibbleH `uc  1 a 1 3 ]
+"64
+[v LCD_Cmd@cmd cmd `uc  1 a 1 wreg ]
+"66
+[v LCD_Cmd@cmd cmd `uc  1 a 1 5 ]
+"71
+} 0
+"37
+[v _LCD_Init LCD_Init `(v  1 e 1 0 ]
+{
+"63
+} 0
+"6
+[v _Load_Cmd Load_Cmd `(v  1 s 1 Load_Cmd ]
+{
+[v Load_Cmd@cmd cmd `uc  1 a 1 wreg ]
+[v Load_Cmd@cmd cmd `uc  1 a 1 wreg ]
+[v Load_Cmd@cmd cmd `uc  1 a 1 0 ]
+"19
+} 0
