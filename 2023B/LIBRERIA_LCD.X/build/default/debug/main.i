@@ -5474,9 +5474,7 @@ void main(void){
     LCD_Write_Text_Cp("01234567890123456789");
     _delay((unsigned long)((500)*(20000000UL/4000.0)));
 
-    LCD_Cmd(12);
-    _delay((unsigned long)((500)*(20000000UL/4000.0)));
-    LCD_Cmd(8);
+    LCD_Cmd(12)
     _delay((unsigned long)((500)*(20000000UL/4000.0)));
     LCD_Cmd(15);
 

@@ -7,7 +7,13 @@ void main(void){
     LCD_Init();
     
     LCD_Write_Text_Cp("01234567890123456789");
-    LCD_Set_Cursor(2,6);
+    __delay_ms(500);
+    
+    LCD_Cmd(_LCD_CURSOR_OFF);
+    __delay_ms(500);
+    LCD_Cmd(_LCD_TURN_OFF);
+    __delay_ms(500);
+    LCD_Cmd(_LCD_TURN_ON);
    
 
 
