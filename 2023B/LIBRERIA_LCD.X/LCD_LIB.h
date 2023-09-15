@@ -11,6 +11,22 @@
 #include <xc.h>
 #include "config.h"
 
+#define _LCD_CLEAR             1
+#define _LCD_RETURN_HOME       2
+#define _LCD_BLINK_CURSOR_ON   15
+#define _LCD_CURSOR_OFF        12
+#define _LCD_UNDERLINE_ON      14
+#define _LCD_FIRST_ROW         128
+#define _LCD_SECOND_ROW        192
+#define _LCD_THIRD_ROW         148
+#define _LCD_FOURTH_ROW        212
+#define _LCD_MOVE_CURSOR_LEFT  16
+#define _LCD_MOVE_CURSOR_RIGHT 20
+#define _LCD_TURN_OFF          8
+#define _LCD_TURN_ON           15
+#define _LCD_SHIFT_LEFT        24
+#define _LCD_SHIFT_RIGHT       28
+
 #define DIR_RS    TRISDbits.TRISD0
 #define DIR_EN    TRISDbits.TRISD1
 #define DIR_D4    TRISDbits.TRISD4
