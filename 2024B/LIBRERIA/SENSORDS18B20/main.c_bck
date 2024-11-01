@@ -1,0 +1,22 @@
+/*
+ * SENSORDS18B20.c
+ *
+ * Created: 14/09/2024 11:25:47 a. m.
+ * Author : USER
+ */ 
+#define F_CPU 8000000UL
+#include <avr/io.h>
+#include <util/delay.h>
+#include "UART/UART_LIB.h"
+
+
+int main(void)
+{
+    UART1_Init(9600);
+    while (1) 
+    {
+		UART1_Transmit_Text("Hola Todes \r\n");
+		_delay_ms(500);
+    }
+}
+
