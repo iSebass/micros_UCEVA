@@ -1,0 +1,666 @@
+
+RTC.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000e  00800100  000003d6  0000046a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000003d6  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000002  0080010e  0080010e  00000478  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000478  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000004a8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000188  00000000  00000000  000004e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000190c  00000000  00000000  00000670  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000009a1  00000000  00000000  00001f7c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000bc4  00000000  00000000  0000291d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000320  00000000  00000000  000034e4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000067e  00000000  00000000  00003804  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000c20  00000000  00000000  00003e82  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000148  00000000  00000000  00004aa2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e6 ed       	ldi	r30, 0xD6	; 214
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ae 30       	cpi	r26, 0x0E	; 14
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	ae e0       	ldi	r26, 0x0E	; 14
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a0 31       	cpi	r26, 0x10	; 16
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 d0 00 	call	0x1a0	; 0x1a0 <main>
+  9e:	0c 94 e9 01 	jmp	0x3d2	; 0x3d2 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <DS1307_Set_Seg_Value>:
+	TWI_Start();
+	TWI_Write(DS1307DIR);
+	TWI_Write(LOCALE_HH);
+	TWI_Write(hour);
+	TWI_Stop();
+}
+  a6:	cf 93       	push	r28
+  a8:	c8 2f       	mov	r28, r24
+  aa:	0e 94 fe 00 	call	0x1fc	; 0x1fc <TWI_Start>
+  ae:	80 ed       	ldi	r24, 0xD0	; 208
+  b0:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+  b4:	80 e0       	ldi	r24, 0x00	; 0
+  b6:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+  ba:	8c 2f       	mov	r24, r28
+  bc:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+  c0:	0e 94 06 01 	call	0x20c	; 0x20c <TWI_Stop>
+  c4:	cf 91       	pop	r28
+  c6:	08 95       	ret
+
+000000c8 <DS1307_Set_Min_Value>:
+  c8:	cf 93       	push	r28
+  ca:	c8 2f       	mov	r28, r24
+  cc:	0e 94 fe 00 	call	0x1fc	; 0x1fc <TWI_Start>
+  d0:	80 ed       	ldi	r24, 0xD0	; 208
+  d2:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+  d6:	81 e0       	ldi	r24, 0x01	; 1
+  d8:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+  dc:	8c 2f       	mov	r24, r28
+  de:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+  e2:	0e 94 06 01 	call	0x20c	; 0x20c <TWI_Stop>
+  e6:	cf 91       	pop	r28
+  e8:	08 95       	ret
+
+000000ea <DS1307_Set_Hour12_Value>:
+void DS1307_Set_Hour12_Value(char hour, char am){
+  ea:	cf 93       	push	r28
+	char ampm;
+	
+	if( am == 1){
+  ec:	61 30       	cpi	r22, 0x01	; 1
+  ee:	19 f4       	brne	.+6      	; 0xf6 <DS1307_Set_Hour12_Value+0xc>
+		ampm  = hour | 0b01100000;
+  f0:	c8 2f       	mov	r28, r24
+  f2:	c0 66       	ori	r28, 0x60	; 96
+  f4:	02 c0       	rjmp	.+4      	; 0xfa <DS1307_Set_Hour12_Value+0x10>
+	}
+	else{
+		ampm = hour | 0b01000000;
+  f6:	c8 2f       	mov	r28, r24
+  f8:	c0 64       	ori	r28, 0x40	; 64
+	}
+	
+	
+	TWI_Start();
+  fa:	0e 94 fe 00 	call	0x1fc	; 0x1fc <TWI_Start>
+	TWI_Write(DS1307DIR);
+  fe:	80 ed       	ldi	r24, 0xD0	; 208
+ 100:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(LOCALE_HH );
+ 104:	82 e0       	ldi	r24, 0x02	; 2
+ 106:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(ampm);
+ 10a:	8c 2f       	mov	r24, r28
+ 10c:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Stop();
+ 110:	0e 94 06 01 	call	0x20c	; 0x20c <TWI_Stop>
+}
+ 114:	cf 91       	pop	r28
+ 116:	08 95       	ret
+
+00000118 <DS1307_Set_Week_Day_Value>:
+void DS1307_Set_Week_Day_Value(char day){
+ 118:	cf 93       	push	r28
+ 11a:	c8 2f       	mov	r28, r24
+	TWI_Start();
+ 11c:	0e 94 fe 00 	call	0x1fc	; 0x1fc <TWI_Start>
+	TWI_Write(DS1307DIR);
+ 120:	80 ed       	ldi	r24, 0xD0	; 208
+ 122:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(LOCALE_DAY);
+ 126:	83 e0       	ldi	r24, 0x03	; 3
+ 128:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(day);
+ 12c:	8c 2f       	mov	r24, r28
+ 12e:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Stop();
+ 132:	0e 94 06 01 	call	0x20c	; 0x20c <TWI_Stop>
+}
+ 136:	cf 91       	pop	r28
+ 138:	08 95       	ret
+
+0000013a <DS1307_Set_Date_Day_Value>:
+void DS1307_Set_Date_Day_Value(char date){
+ 13a:	cf 93       	push	r28
+ 13c:	c8 2f       	mov	r28, r24
+	TWI_Start();
+ 13e:	0e 94 fe 00 	call	0x1fc	; 0x1fc <TWI_Start>
+	TWI_Write(DS1307DIR);
+ 142:	80 ed       	ldi	r24, 0xD0	; 208
+ 144:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(LOCALE_DATE);
+ 148:	84 e0       	ldi	r24, 0x04	; 4
+ 14a:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(date);
+ 14e:	8c 2f       	mov	r24, r28
+ 150:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Stop();
+ 154:	0e 94 06 01 	call	0x20c	; 0x20c <TWI_Stop>
+}
+ 158:	cf 91       	pop	r28
+ 15a:	08 95       	ret
+
+0000015c <DS1307_Set_Month_Value>:
+void DS1307_Set_Month_Value(char month){
+ 15c:	cf 93       	push	r28
+ 15e:	c8 2f       	mov	r28, r24
+	TWI_Start();
+ 160:	0e 94 fe 00 	call	0x1fc	; 0x1fc <TWI_Start>
+	TWI_Write(DS1307DIR);
+ 164:	80 ed       	ldi	r24, 0xD0	; 208
+ 166:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(LOCALE_MONTH);
+ 16a:	85 e0       	ldi	r24, 0x05	; 5
+ 16c:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(month);
+ 170:	8c 2f       	mov	r24, r28
+ 172:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Stop();
+ 176:	0e 94 06 01 	call	0x20c	; 0x20c <TWI_Stop>
+}
+ 17a:	cf 91       	pop	r28
+ 17c:	08 95       	ret
+
+0000017e <DS1307_Set_Year_Value>:
+void DS1307_Set_Year_Value(char year){
+ 17e:	cf 93       	push	r28
+ 180:	c8 2f       	mov	r28, r24
+	TWI_Start();
+ 182:	0e 94 fe 00 	call	0x1fc	; 0x1fc <TWI_Start>
+	TWI_Write(DS1307DIR);
+ 186:	80 ed       	ldi	r24, 0xD0	; 208
+ 188:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(LOCALE_YEAR);
+ 18c:	86 e0       	ldi	r24, 0x06	; 6
+ 18e:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(year);
+ 192:	8c 2f       	mov	r24, r28
+ 194:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Stop();
+ 198:	0e 94 06 01 	call	0x20c	; 0x20c <TWI_Stop>
+ 19c:	cf 91       	pop	r28
+ 19e:	08 95       	ret
+
+000001a0 <main>:
+
+#define DIR_DS1307 0xD0
+
+int main(void)
+{
+	TWI_Init();
+ 1a0:	0e 94 f5 00 	call	0x1ea	; 0x1ea <TWI_Init>
+	
+	i2c_lcd_init();
+ 1a4:	0e 94 a3 01 	call	0x346	; 0x346 <i2c_lcd_init>
+	i2c_lcd_puts("Hola Amigos!");
+ 1a8:	81 e0       	ldi	r24, 0x01	; 1
+ 1aa:	91 e0       	ldi	r25, 0x01	; 1
+ 1ac:	0e 94 dc 01 	call	0x3b8	; 0x3b8 <i2c_lcd_puts>
+	
+	DS1307_Set_Seg_Value(0x58);
+ 1b0:	88 e5       	ldi	r24, 0x58	; 88
+ 1b2:	0e 94 53 00 	call	0xa6	; 0xa6 <DS1307_Set_Seg_Value>
+	DS1307_Set_Min_Value(0x59);
+ 1b6:	89 e5       	ldi	r24, 0x59	; 89
+ 1b8:	0e 94 64 00 	call	0xc8	; 0xc8 <DS1307_Set_Min_Value>
+	//DS1307_Set_Hour24_Value(0x23);
+	DS1307_Set_Hour12_Value(0x11, _AM);
+ 1bc:	60 e0       	ldi	r22, 0x00	; 0
+ 1be:	81 e1       	ldi	r24, 0x11	; 17
+ 1c0:	0e 94 75 00 	call	0xea	; 0xea <DS1307_Set_Hour12_Value>
+	DS1307_Set_Week_Day_Value(0x03);
+ 1c4:	83 e0       	ldi	r24, 0x03	; 3
+ 1c6:	0e 94 8c 00 	call	0x118	; 0x118 <DS1307_Set_Week_Day_Value>
+	DS1307_Set_Date_Day_Value(0x06);
+ 1ca:	86 e0       	ldi	r24, 0x06	; 6
+ 1cc:	0e 94 9d 00 	call	0x13a	; 0x13a <DS1307_Set_Date_Day_Value>
+	DS1307_Set_Month_Value(0x11);
+ 1d0:	81 e1       	ldi	r24, 0x11	; 17
+ 1d2:	0e 94 ae 00 	call	0x15c	; 0x15c <DS1307_Set_Month_Value>
+	DS1307_Set_Year_Value(0x24);
+ 1d6:	84 e2       	ldi	r24, 0x24	; 36
+ 1d8:	0e 94 bf 00 	call	0x17e	; 0x17e <DS1307_Set_Year_Value>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 1dc:	8f e1       	ldi	r24, 0x1F	; 31
+ 1de:	9e e4       	ldi	r25, 0x4E	; 78
+ 1e0:	01 97       	sbiw	r24, 0x01	; 1
+ 1e2:	f1 f7       	brne	.-4      	; 0x1e0 <main+0x40>
+ 1e4:	00 c0       	rjmp	.+0      	; 0x1e6 <main+0x46>
+ 1e6:	00 00       	nop
+ 1e8:	f9 cf       	rjmp	.-14     	; 0x1dc <main+0x3c>
+
+000001ea <TWI_Init>:
+	
+	// TMSR0 = 0 -> PREESCALER = 1
+	// TMSR0 = 1 -> PREESCALER = 4
+	// TMSR0 = 2 -> PREESCALER = 16
+	// TMSR0 = 3 -> PREESCALER = 64
+	TWSR = 0; 
+ 1ea:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+				|   Fosc      |   
+		TWBRn = | ______ - 16 | / 2
+				|  Fscl		  |	
+                
+	*/
+	TWBR = ((F_CPU/SCL_CLOCK)-16)/2; 
+ 1ee:	80 e2       	ldi	r24, 0x20	; 32
+ 1f0:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7f80b8>
+	
+	// Habilitación del TWI;
+	TWCR = (1<<TWEN);           
+ 1f4:	84 e0       	ldi	r24, 0x04	; 4
+ 1f6:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 1fa:	08 95       	ret
+
+000001fc <TWI_Start>:
+}
+
+void TWI_Start(void){
+	TWCR = (1<<TWINT)|	(1<<TWSTA)|(1<<TWEN); //enviamos la instruccion de start condition ofrecida por el fabricante
+ 1fc:	84 ea       	ldi	r24, 0xA4	; 164
+ 1fe:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+	while (!(TWCR &(1<<TWINT))); // Esperamos a que se genere la señal de start
+ 202:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 206:	88 23       	and	r24, r24
+ 208:	e4 f7       	brge	.-8      	; 0x202 <TWI_Start+0x6>
+}
+ 20a:	08 95       	ret
+
+0000020c <TWI_Stop>:
+
+void TWI_Stop(void){
+
+	TWCR = (1<<TWINT)|(1<<TWEN)|(1<<TWSTO);
+ 20c:	84 e9       	ldi	r24, 0x94	; 148
+ 20e:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+	while(TWCR & (1<<TWSTO));
+ 212:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 216:	84 fd       	sbrc	r24, 4
+ 218:	fc cf       	rjmp	.-8      	; 0x212 <TWI_Stop+0x6>
+}
+ 21a:	08 95       	ret
+
+0000021c <TWI_Write>:
+
+void TWI_Write(uint8_t data){
+	// Escritura de datos en el bus TWI
+	TWDR = data;
+ 21c:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+	TWCR = (1<<TWINT)|(1<<TWEN);
+ 220:	84 e8       	ldi	r24, 0x84	; 132
+ 222:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+	
+	// Esperar a que se complete la operación
+	while (!(TWCR & (1<<TWINT)));
+ 226:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 22a:	88 23       	and	r24, r24
+ 22c:	e4 f7       	brge	.-8      	; 0x226 <TWI_Write+0xa>
+}
+ 22e:	08 95       	ret
+
+00000230 <PCF_Wr>:
+void _write_nibble(uint8_t nibble);
+void _send_byte(uint8_t value, uint8_t mode);
+void PCF_Wr(uint8_t data);
+
+
+void PCF_Wr(uint8_t data){
+ 230:	cf 93       	push	r28
+	if(statusLED==1) data |= (1<<_LCD_LED); else data &= ~(1<<_LCD_LED);
+ 232:	90 91 00 01 	lds	r25, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 236:	91 30       	cpi	r25, 0x01	; 1
+ 238:	19 f4       	brne	.+6      	; 0x240 <PCF_Wr+0x10>
+ 23a:	c8 2f       	mov	r28, r24
+ 23c:	c8 60       	ori	r28, 0x08	; 8
+ 23e:	02 c0       	rjmp	.+4      	; 0x244 <PCF_Wr+0x14>
+ 240:	c8 2f       	mov	r28, r24
+ 242:	c7 7f       	andi	r28, 0xF7	; 247
+	TWI_Start();
+ 244:	0e 94 fe 00 	call	0x1fc	; 0x1fc <TWI_Start>
+	TWI_Write( (LCD_DIR << 1) | 0);
+ 248:	8e e7       	ldi	r24, 0x7E	; 126
+ 24a:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Write(data);
+ 24e:	8c 2f       	mov	r24, r28
+ 250:	0e 94 0e 01 	call	0x21c	; 0x21c <TWI_Write>
+	TWI_Stop();
+ 254:	0e 94 06 01 	call	0x20c	; 0x20c <TWI_Stop>
+	
+}
+ 258:	cf 91       	pop	r28
+ 25a:	08 95       	ret
+
+0000025c <_write_nibble>:
+
+
+
+void _write_nibble(uint8_t nibble){
+	if( (nibble & 0x01) == 0) word &= ~(1<<_LCD_D4); else word |= (1<<_LCD_D4);
+ 25c:	80 fd       	sbrc	r24, 0
+ 25e:	06 c0       	rjmp	.+12     	; 0x26c <_write_nibble+0x10>
+ 260:	90 91 0f 01 	lds	r25, 0x010F	; 0x80010f <word>
+ 264:	9f 7e       	andi	r25, 0xEF	; 239
+ 266:	90 93 0f 01 	sts	0x010F, r25	; 0x80010f <word>
+ 26a:	05 c0       	rjmp	.+10     	; 0x276 <_write_nibble+0x1a>
+ 26c:	90 91 0f 01 	lds	r25, 0x010F	; 0x80010f <word>
+ 270:	90 61       	ori	r25, 0x10	; 16
+ 272:	90 93 0f 01 	sts	0x010F, r25	; 0x80010f <word>
+	if( (nibble & 0x02) == 0) word &= ~(1<<_LCD_D5); else word |= (1<<_LCD_D5);
+ 276:	81 fd       	sbrc	r24, 1
+ 278:	06 c0       	rjmp	.+12     	; 0x286 <_write_nibble+0x2a>
+ 27a:	90 91 0f 01 	lds	r25, 0x010F	; 0x80010f <word>
+ 27e:	9f 7d       	andi	r25, 0xDF	; 223
+ 280:	90 93 0f 01 	sts	0x010F, r25	; 0x80010f <word>
+ 284:	05 c0       	rjmp	.+10     	; 0x290 <_write_nibble+0x34>
+ 286:	90 91 0f 01 	lds	r25, 0x010F	; 0x80010f <word>
+ 28a:	90 62       	ori	r25, 0x20	; 32
+ 28c:	90 93 0f 01 	sts	0x010F, r25	; 0x80010f <word>
+	if( (nibble & 0x04) == 0) word &= ~(1<<_LCD_D6); else word |= (1<<_LCD_D6);
+ 290:	82 fd       	sbrc	r24, 2
+ 292:	06 c0       	rjmp	.+12     	; 0x2a0 <_write_nibble+0x44>
+ 294:	90 91 0f 01 	lds	r25, 0x010F	; 0x80010f <word>
+ 298:	9f 7b       	andi	r25, 0xBF	; 191
+ 29a:	90 93 0f 01 	sts	0x010F, r25	; 0x80010f <word>
+ 29e:	05 c0       	rjmp	.+10     	; 0x2aa <_write_nibble+0x4e>
+ 2a0:	90 91 0f 01 	lds	r25, 0x010F	; 0x80010f <word>
+ 2a4:	90 64       	ori	r25, 0x40	; 64
+ 2a6:	90 93 0f 01 	sts	0x010F, r25	; 0x80010f <word>
+	if( (nibble & 0x08) == 0) word &= ~(1<<_LCD_D7); else word |= (1<<_LCD_D7);
+ 2aa:	83 fd       	sbrc	r24, 3
+ 2ac:	06 c0       	rjmp	.+12     	; 0x2ba <_write_nibble+0x5e>
+ 2ae:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <word>
+ 2b2:	8f 77       	andi	r24, 0x7F	; 127
+ 2b4:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <word>
+ 2b8:	05 c0       	rjmp	.+10     	; 0x2c4 <_write_nibble+0x68>
+ 2ba:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <word>
+ 2be:	80 68       	ori	r24, 0x80	; 128
+ 2c0:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <word>
+	
+	word &= ~(1<<_LCD_EN); PCF_Wr(word);
+ 2c4:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <word>
+ 2c8:	8b 7f       	andi	r24, 0xFB	; 251
+ 2ca:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <word>
+ 2ce:	0e 94 18 01 	call	0x230	; 0x230 <PCF_Wr>
+	word |=  (1<<_LCD_EN); PCF_Wr(word);
+ 2d2:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <word>
+ 2d6:	84 60       	ori	r24, 0x04	; 4
+ 2d8:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <word>
+ 2dc:	0e 94 18 01 	call	0x230	; 0x230 <PCF_Wr>
+	word &= ~(1<<_LCD_EN); PCF_Wr(word);
+ 2e0:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <word>
+ 2e4:	8b 7f       	andi	r24, 0xFB	; 251
+ 2e6:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <word>
+ 2ea:	0e 94 18 01 	call	0x230	; 0x230 <PCF_Wr>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2ee:	87 e5       	ldi	r24, 0x57	; 87
+ 2f0:	92 e0       	ldi	r25, 0x02	; 2
+ 2f2:	01 97       	sbiw	r24, 0x01	; 1
+ 2f4:	f1 f7       	brne	.-4      	; 0x2f2 <_write_nibble+0x96>
+ 2f6:	00 c0       	rjmp	.+0      	; 0x2f8 <_write_nibble+0x9c>
+ 2f8:	00 00       	nop
+ 2fa:	08 95       	ret
+
+000002fc <_send_byte>:
+	
+	_delay_us(300);
+}
+
+void  _send_byte(uint8_t value, uint8_t mode){
+ 2fc:	cf 93       	push	r28
+ 2fe:	c8 2f       	mov	r28, r24
+	
+	switch(mode){
+ 300:	66 23       	and	r22, r22
+ 302:	19 f0       	breq	.+6      	; 0x30a <_send_byte+0xe>
+ 304:	61 30       	cpi	r22, 0x01	; 1
+ 306:	39 f0       	breq	.+14     	; 0x316 <_send_byte+0x1a>
+ 308:	0b c0       	rjmp	.+22     	; 0x320 <_send_byte+0x24>
+		case _COMMAND_: word &= ~(1<<_LCD_RS); break;
+ 30a:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <word>
+ 30e:	8e 7f       	andi	r24, 0xFE	; 254
+ 310:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <word>
+ 314:	05 c0       	rjmp	.+10     	; 0x320 <_send_byte+0x24>
+		case _DATA_:    word |=  (1<<_LCD_RS); break;
+ 316:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <word>
+ 31a:	81 60       	ori	r24, 0x01	; 1
+ 31c:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <word>
+	}
+	_write_nibble(value>>4);
+ 320:	8c 2f       	mov	r24, r28
+ 322:	82 95       	swap	r24
+ 324:	8f 70       	andi	r24, 0x0F	; 15
+ 326:	0e 94 2e 01 	call	0x25c	; 0x25c <_write_nibble>
+	_write_nibble(value&0x0F);
+ 32a:	8c 2f       	mov	r24, r28
+ 32c:	8f 70       	andi	r24, 0x0F	; 15
+ 32e:	0e 94 2e 01 	call	0x25c	; 0x25c <_write_nibble>
+}
+ 332:	cf 91       	pop	r28
+ 334:	08 95       	ret
+
+00000336 <i2c_lcd_write>:
+
+void i2c_lcd_write(uint8_t letra){
+	_send_byte(letra,_DATA_);
+ 336:	61 e0       	ldi	r22, 0x01	; 1
+ 338:	0e 94 7e 01 	call	0x2fc	; 0x2fc <_send_byte>
+ 33c:	08 95       	ret
+
+0000033e <i2c_lcd_command>:
+}
+void i2c_lcd_command(uint8_t cmd){
+	_send_byte(cmd,_COMMAND_);
+ 33e:	60 e0       	ldi	r22, 0x00	; 0
+ 340:	0e 94 7e 01 	call	0x2fc	; 0x2fc <_send_byte>
+ 344:	08 95       	ret
+
+00000346 <i2c_lcd_init>:
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 346:	8f e2       	ldi	r24, 0x2F	; 47
+ 348:	95 e7       	ldi	r25, 0x75	; 117
+ 34a:	01 97       	sbiw	r24, 0x01	; 1
+ 34c:	f1 f7       	brne	.-4      	; 0x34a <i2c_lcd_init+0x4>
+ 34e:	00 c0       	rjmp	.+0      	; 0x350 <i2c_lcd_init+0xa>
+ 350:	00 00       	nop
+void i2c_lcd_init(){
+
+	
+	
+	_delay_ms(15);
+	_write_nibble(0x03);
+ 352:	83 e0       	ldi	r24, 0x03	; 3
+ 354:	0e 94 2e 01 	call	0x25c	; 0x25c <_write_nibble>
+ 358:	8f e0       	ldi	r24, 0x0F	; 15
+ 35a:	97 e2       	ldi	r25, 0x27	; 39
+ 35c:	01 97       	sbiw	r24, 0x01	; 1
+ 35e:	f1 f7       	brne	.-4      	; 0x35c <i2c_lcd_init+0x16>
+ 360:	00 c0       	rjmp	.+0      	; 0x362 <i2c_lcd_init+0x1c>
+ 362:	00 00       	nop
+	_delay_ms(5);
+	_write_nibble(0x03);
+ 364:	83 e0       	ldi	r24, 0x03	; 3
+ 366:	0e 94 2e 01 	call	0x25c	; 0x25c <_write_nibble>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 36a:	87 ec       	ldi	r24, 0xC7	; 199
+ 36c:	90 e0       	ldi	r25, 0x00	; 0
+ 36e:	01 97       	sbiw	r24, 0x01	; 1
+ 370:	f1 f7       	brne	.-4      	; 0x36e <i2c_lcd_init+0x28>
+ 372:	00 c0       	rjmp	.+0      	; 0x374 <i2c_lcd_init+0x2e>
+ 374:	00 00       	nop
+	_delay_us(100);
+	_write_nibble(0x03);
+ 376:	83 e0       	ldi	r24, 0x03	; 3
+ 378:	0e 94 2e 01 	call	0x25c	; 0x25c <_write_nibble>
+	_write_nibble(0x02);
+ 37c:	82 e0       	ldi	r24, 0x02	; 2
+ 37e:	0e 94 2e 01 	call	0x25c	; 0x25c <_write_nibble>
+	
+	i2c_lcd_command( _LCD_FUNTIONSET | _LCD_4BITMODE | _LCD_2LINE | _LCD_5x8DOTS );
+ 382:	88 e2       	ldi	r24, 0x28	; 40
+ 384:	0e 94 9f 01 	call	0x33e	; 0x33e <i2c_lcd_command>
+ 388:	92 e6       	ldi	r25, 0x62	; 98
+ 38a:	9a 95       	dec	r25
+ 38c:	f1 f7       	brne	.-4      	; 0x38a <i2c_lcd_init+0x44>
+ 38e:	00 c0       	rjmp	.+0      	; 0x390 <i2c_lcd_init+0x4a>
+	_delay_us(37);
+	
+	_lcd_params = _LCD_DISPLAY_ON | _LCD_CURSOR_ON | _LCD_BLINK_ON;
+ 390:	87 e0       	ldi	r24, 0x07	; 7
+ 392:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <__data_end>
+	i2c_lcd_command(_LCD_DISPLAYCONTROL | _lcd_params);
+ 396:	8f e0       	ldi	r24, 0x0F	; 15
+ 398:	0e 94 9f 01 	call	0x33e	; 0x33e <i2c_lcd_command>
+ 39c:	82 e6       	ldi	r24, 0x62	; 98
+ 39e:	8a 95       	dec	r24
+ 3a0:	f1 f7       	brne	.-4      	; 0x39e <i2c_lcd_init+0x58>
+ 3a2:	00 c0       	rjmp	.+0      	; 0x3a4 <i2c_lcd_init+0x5e>
+	_delay_us(37);
+	
+	i2c_lcd_command(_LCD_CLEARDISPLAY);
+ 3a4:	81 e0       	ldi	r24, 0x01	; 1
+ 3a6:	0e 94 9f 01 	call	0x33e	; 0x33e <i2c_lcd_command>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 3aa:	8f e9       	ldi	r24, 0x9F	; 159
+ 3ac:	9f e0       	ldi	r25, 0x0F	; 15
+ 3ae:	01 97       	sbiw	r24, 0x01	; 1
+ 3b0:	f1 f7       	brne	.-4      	; 0x3ae <i2c_lcd_init+0x68>
+ 3b2:	00 c0       	rjmp	.+0      	; 0x3b4 <i2c_lcd_init+0x6e>
+ 3b4:	00 00       	nop
+ 3b6:	08 95       	ret
+
+000003b8 <i2c_lcd_puts>:
+	_delay_ms(2);
+}
+
+
+
+void i2c_lcd_puts(char *str){
+ 3b8:	cf 93       	push	r28
+ 3ba:	df 93       	push	r29
+ 3bc:	ec 01       	movw	r28, r24
+	while(*str){
+ 3be:	03 c0       	rjmp	.+6      	; 0x3c6 <i2c_lcd_puts+0xe>
+		i2c_lcd_write(*str);
+ 3c0:	0e 94 9b 01 	call	0x336	; 0x336 <i2c_lcd_write>
+		str++;
+ 3c4:	21 96       	adiw	r28, 0x01	; 1
+}
+
+
+
+void i2c_lcd_puts(char *str){
+	while(*str){
+ 3c6:	88 81       	ld	r24, Y
+ 3c8:	81 11       	cpse	r24, r1
+ 3ca:	fa cf       	rjmp	.-12     	; 0x3c0 <i2c_lcd_puts+0x8>
+		i2c_lcd_write(*str);
+		str++;
+	}
+}
+ 3cc:	df 91       	pop	r29
+ 3ce:	cf 91       	pop	r28
+ 3d0:	08 95       	ret
+
+000003d2 <_exit>:
+ 3d2:	f8 94       	cli
+
+000003d4 <__stop_program>:
+ 3d4:	ff cf       	rjmp	.-2      	; 0x3d4 <__stop_program>
