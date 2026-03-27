@@ -25,6 +25,43 @@ void LedOff();
 void RelayOn();
 void RelayOff();
 
+//DECLARAMOS LOS METODOS DEL MENU
+void MenuPpal();
+void MenuLed();
+void MenuMotor();
+void MenuRelay();
+
+enum{
+	menu_ppl,
+	menu_led,
+	menu_motor,
+	menu_relay
+};
+
+
+//FUNCIONES DEL MENU
+char menuPPL[3][6]={"Led  ","Motor","Relay"};
+char menuLED[3][5]={"on  ","Off ","Back"};
+char menuMotor[4][6]={"T.Der","T.Izq","Stop ","Back "};
+char menuRelay[3][5]={"on  ","Off ","Back"};
+	
+enum{
+	led,
+	motor,
+	relay,
+	onled,
+	offled,
+	backled,
+	tder,
+	tiz,
+	stop,
+	backmotor,
+	onrelay,
+	offrelay,
+	backrelay
+};
+
+int op=led, op_menu=menu_ppl;
 
 int main(void)
 {
@@ -46,20 +83,100 @@ int main(void)
 	
 	
     lcd_init();
+	lcd_disable_cursor();
+	lcd_disable_blink();
+	
 	
 	
 	
     while (1) 
     {
-		RelayOn();
-		MotorIzquierda();
-		LedOn();
-		_delay_ms(500);
-		RelayOff();
-		LedOff();
-		MotoroDerecha();
-		_delay_ms(500);
+		switch(op_menu){
+			case menu_ppl: MenuPpal(); break;
+			case menu_led: MenuLed(); break;
+			case menu_motor: MenuMotor(); break;
+			case menu_relay: MenuRelay(); break;
+		}
+		
     }
+}
+
+void MenuPpal(){
+
+	lcd_set_cursor(1,1);
+	lcd_puts("    MENU PPAL    ");
+	lcd_set_cursor(2,1);
+	lcd_puts( menuPPL[op] );
+	if( GPIO_READ_PORTB(BTNUP_PIN) == HIGH ){
+		while(GPIO_READ_PORTB(BTNUP_PIN) == HIGH );
+		op++;
+		if(op>relay) op=led;
+		
+	}
+	if( GPIO_READ_PORTB(BTNDOWN_PIN) == HIGH  ){
+		while(GPIO_READ_PORTB(BTNDOWN_PIN) == HIGH );
+		op--;
+		if(op<led) op=relay;
+		
+	}
+	if( GPIO_READ_PORTB(BTNSELECT_PIN) ){
+		while(GPIO_READ_PORTB(BTNSELECT_PIN) == HIGH );
+		switch(op){
+			case led:   lcd_clear();
+						op=onled; 
+						op_menu=menu_led;
+						break;
+			case motor: lcd_clear();
+						op=tder;
+						op_menu=menu_motor;
+						break;
+			case relay: lcd_clear();
+						op=onrelay;
+						op_menu=menu_relay;
+						break;
+		}
+		
+	}
+}
+
+void MenuLed(){
+	lcd_set_cursor(1,1);
+	lcd_puts("    MENU LED    ");
+	lcd_set_cursor(2,1);
+	lcd_puts( menuLED[op-(relay+1)] );
+	
+	if( GPIO_READ_PORTB(BTNUP_PIN) == HIGH ){
+		while(GPIO_READ_PORTB(BTNUP_PIN) == HIGH );
+		op++;
+		if(op>backled) op=onled;
+		
+	}
+	if( GPIO_READ_PORTB(BTNDOWN_PIN) == HIGH  ){
+		while(GPIO_READ_PORTB(BTNDOWN_PIN) == HIGH );
+		op--;
+		if(op<onled) op=backled;
+		
+	}
+	if( GPIO_READ_PORTB(BTNSELECT_PIN) ){
+		while(GPIO_READ_PORTB(BTNSELECT_PIN) == HIGH );
+		switch(op){
+			case onled:   LedOn(); break;
+			case offled:  LedOff();break;
+			case backled: lcd_clear();
+						  op=led;
+						  op_menu=menu_ppl;
+			              break;
+		}
+	}
+	
+}
+void MenuMotor(){
+	lcd_set_cursor(1,1);
+	lcd_puts("    MENU MOTOR    ");
+}
+void MenuRelay(){
+	lcd_set_cursor(1,1);
+	lcd_puts("    MENU RELAY    ");
 }
 
 void MotoroDerecha(){
